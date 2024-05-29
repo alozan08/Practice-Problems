@@ -203,7 +203,50 @@ if __name__ == '__main__':
 
     swap(num1, num2)
     print('num1 =', num1.get_num(), 'and num2 =', num2.get_num())
+
+
 #######################################################################################################################
+#   Write a program that takes in 3 integers as inputs and outputs the largest value.
+#   Use a try block to perform all the statements.
+#   Use an except block to catch any EOFErrors caused by missing inputs, output the number of
+#   inputs read, and output the largest value or "No max" if no inputs are read
+#
+#   Hint: Use a counter to keep track of the number of inputs read and commpare the inputs
+#   accordingly in the except block when an exception is caught
+nums = []
+count = 0
+
+try:
+    for i in range(3):
+        nums.append(int(input()))
+        count += 1
+    print(max(nums))
+except EOFError:
+    print(f'{count} input(s) read:')
+    if count == 0:
+        print('No max')
+    else: print(f'Max is {max(nums)}')
+
+
 #######################################################################################################################
+#   Given a text file containing the availability of food items, write a program that reads the info
+#   from the text file and outputs the available food items. The program first reads the
+#   name of the text file from the user. The program then reads the text file, stores the info into 4 separate lists,
+#   and outputs the available food items in the following format:
+#       name (category) - description
+#   Assume the file contains the category, name, description, and availability of at least one food item,
+#   separated by a tab character
+import os
+
+
+items = []
+with open(input(), 'r') as file:
+    for line in file:
+        current = line.strip().split('\t')
+        items.append(current)
+
+for item in items:
+    if item[-1] == 'Available':
+        print(f'{item[1]} ({item[0]}) -- {item[2]}')
 #######################################################################################################################
 
